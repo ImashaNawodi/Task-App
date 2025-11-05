@@ -10,6 +10,16 @@ services:
       - mongo
     environment:
       - MONGO_URI=mongodb://mongo:27017/users
+  task-service:
+    build:
+      context: ./task-service
+    container_name: task-service
+    ports:
+      - "3002:3002"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/tasks
   mongo:
     image: mongo:5
     container_name: mongo
