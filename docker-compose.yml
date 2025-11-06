@@ -18,6 +18,7 @@ services:
       - "3002:3002"
     depends_on:
       - mongo
+      - rabbitmq
     environment:
       - MONGO_URI=mongodb://mongo:27017/tasks
   mongo:
@@ -27,6 +28,22 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+  
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_node
+    ports:
+      - "15672:15672"
+      - "5672:5672"
 
+  notification-service:
+    build:
+      context: ./notification-service
+    container_name: notification-service
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+      - rabbitmq
 volumes:
   mongo-data:
