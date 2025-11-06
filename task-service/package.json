@@ -1,5 +1,5 @@
 {
-  "name": "user-service",
+  "name": "task-service",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "amqplib": "^0.10.9",
     "axios": "^1.10.0",
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
@@ -23,7 +24,6 @@
     "mongoose": "^8.15.1",
     "mongoose-sequence": "^6.0.1",
     "nodemon": "^3.1.10",
-    "npm": "^10.9.2",
-    "uuid": "^11.1.0"
+    "npm": "^10.9.2"
   }
 }
